@@ -1,0 +1,42 @@
+ {% load staticfiles %} 
+ {# {% extends 'personal/base.html' %}          #}
+<html>
+ <head>
+            <title>Personal</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/personal.css' %}">
+        </head>
+
+    <body>
+        <div style = "padding:0 600px" class="page-header">
+    	   <h1>Personal</h1>
+    	</div>	
+        <table>
+        <div class ="content container">
+            
+            {% for persona in personas %}
+            <tr>
+                <td style = "padding:0 30px">{{persona.nombre}} </td>
+                <td style = "padding:0 10px">{{persona.ap_paterno}} </td>
+                <td style = "padding:0 10px">{{persona.ap_materno}} </td>
+                <td style = "padding:0 10px">{{persona.edad}} </td>
+                <td style = "padding:0 20px">
+                    <a href="{% url 'editar' persona.pk %}">editar</a>
+                </td>
+                <td>
+                    <a href="{% url 'eliminar' persona.pk %}">eliminar</a>
+                </td>
+            </tr>
+        </div>	
+                
+    		{% endfor %}
+    	</table>
+        <br>
+        <div class ="h1">
+            
+        <a style = "padding:0 30px"href=" {% url 'agregar' %}">Agregar</a>
+        </div>
+    </body>
+</html>
